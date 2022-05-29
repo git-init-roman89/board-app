@@ -1,5 +1,15 @@
 import { v4 as uuidv4 } from 'uuid';
-const initialData = {
+const boards = [
+  {
+    id: uuidv4(),
+    title: "Demo Board"
+  },
+  {
+    id: uuidv4(),
+    title: "New Board"
+  }
+]
+const initialBoardData = {
   tasks: {
     "task-1": { id: uuidv4(), text: "setup a react environment" },
     "task-2": { id: uuidv4(), text: "create react app" },
@@ -93,25 +103,12 @@ const initialData = {
       taskIds: ["task-16", "task-17", "task-18", "task-19", "task-20"]
     }
   },
-  columnOrder: ["column-1", "column-2", "column-3", "column-4"],
-  boards: [
-    {
-      id: uuidv4(),
-      title: "Demo Board"
-    },
-    {
-      id: uuidv4(),
-      title: "New Board"
-    },
-    {
-      id: uuidv4(),
-      title: "New Board"
-    },
-    {
-      id: uuidv4(),
-      title: "New Board"
-    }
-  ]
+  columnOrder: ["column-1", "column-2", "column-3", "column-4"]
 };
 
-export default initialData;
+export default boards.map(board => {
+  return {
+    ...board,
+    ...initialBoardData
+  }
+});

@@ -7,7 +7,7 @@ const MainPage = (props) => {
       <Header />
       <main className="main-container">
         <Sidebar />
-        <BoardList state = {props.state} mutateState={props.mutateState} />
+        <BoardList boards = {props.boards} mutateState={props.mutateState} />
       </main>
     </>
   );

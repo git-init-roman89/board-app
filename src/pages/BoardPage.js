@@ -4,15 +4,15 @@ import "./BoardPage.scss";
 
 const BoardPage = (props) => {
   let { id } = useParams();
-//   const boardsListComponent = boardsList.find((item) => {
-//     return id === item.id;
-//   });
+  const board = props.boards.find((item) => {
+    return id === item.id;
+  });
 
   return (
     <>
       <Header />
       <main className="boardpage-container">
-        <BoardPageWorkspace state={props.state} />
+        <BoardPageWorkspace board={board} boards={props.boards} />
       </main>
     </>
   );

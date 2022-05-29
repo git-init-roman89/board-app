@@ -4,11 +4,11 @@ import { CreateNewBoard, BoardItem } from "../index";
 import "./BoardList.scss";
 
 const BoardList = (props) => {
-  console.log(props.state)
+  console.log(props)
   const [showModal, setShowModal] = useState(false);
 
-  const boardsList = props.state.boards.map((item) => {
-    return <Link to={`demoboard/${item.id}`}><BoardItem key={item.id} title={item.title} state={props.state} /></Link>;
+  const boardsList = props.boards.map((item) => {
+    return <Link to={`demoboard/${item.id}`} key={item.id} ><BoardItem key={item.id} title={item.title} state={props.boards} /></Link>;
   });
 
   return (
@@ -35,7 +35,7 @@ const BoardList = (props) => {
           onClose={() => setShowModal(false)}
           showModal={showModal}
           mutateState={props.mutateState}
-          state={props.state}
+          boards={props.boards}
         />
         </div>
     </section>

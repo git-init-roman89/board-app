@@ -14,8 +14,8 @@ const App = (props) => {
   return (
     <>
     <Routes>
-      <Route path="/" element={<MainPage state = {state} mutateState={mutateState} />} />
-      <Route path="demoboard/:id" element={<BoardPage state={state} />} />
+      <Route path="/" element={<MainPage boards = {state} mutateState={mutateState} />} />
+      <Route path="demoboard/:id" element={<BoardPage boards={state} />} />
     </Routes>
     </>
   );

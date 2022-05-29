@@ -5,23 +5,23 @@ import "./BoardPageWorkspace.scss";
 import CreateNewList from "../CreateNewList/CreateNewList";
 
 const BoardPageWorkspace = (props) => {
-  const [colState, setColState] = useState(props.state);
+  const [board, setBoard] = useState(props.board);
 
-  useEffect(() => {
-    const data = localStorage.getItem("myState")
-    if(data) {
-      setColState(JSON.parse(data))
-    }
-  }, []);
+  // useEffect(() => {
+  //   const data = localStorage.getItem("myState")
+  //   if(data) {
+  //     setboard(JSON.parse(data))
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("myState", JSON.stringify(colState))
-  }, [colState]);
+  // useEffect(() => {
+  //   localStorage.setItem("myState", JSON.stringify(board))
+  // }, [board]);
 
-  const workspace = colState.columnOrder.map((columnId, index) => {
-    const column = colState.columns[columnId];
+  const workspace = board.columnOrder.map((columnId, index) => {
+    const column = board.columns[columnId];
     const tasks = column.taskIds.map((taskId) => {
-      return colState.tasks[taskId];
+      return board.tasks[taskId];
     });
     return (
         <WorkspaceColumn
@@ -48,19 +48,19 @@ const BoardPageWorkspace = (props) => {
     }
 
     if (type === "column") {
-      const newColumnOrder = Array.from(colState.columnOrder);
+      const newColumnOrder = Array.from(board.columnOrder);
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
 
-      setColState({
-        ...colState,
+      setBoard({
+        ...board,
           columnOrder: newColumnOrder,
       });
       return;
     }
 
-    const start = colState.columns[source.droppableId];
-    const finish = colState.columns[destination.droppableId];
+    const start = board.columns[source.droppableId];
+    const finish = board.columns[destination.droppableId];
 
     if (start === finish) {
       const newTaskIds = Array.from(start.taskIds);
@@ -72,10 +72,10 @@ const BoardPageWorkspace = (props) => {
         taskIds: newTaskIds,
       };
 
-      setColState({
-        ...colState,
+      setBoard({
+        ...board,
         columns: {
-          ...colState.columns,
+          ...board.columns,
           [newColumn.id]: newColumn,
         },
       });
@@ -96,10 +96,10 @@ const BoardPageWorkspace = (props) => {
       taskIds: finishTaskIds,
     };
 
-    setColState({
-      ...colState,
+    setBoard({
+      ...board,
       columns: {
-        ...colState.columns,
+        ...board.columns,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish,
       },

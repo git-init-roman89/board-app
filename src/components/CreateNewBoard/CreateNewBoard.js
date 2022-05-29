@@ -2,7 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 import "./CreateNewBoard.scss";
 
-const CreateNewBoard = ({state, mutateState, showModal, onClose}) => {
+const CreateNewBoard = ({boards, mutateState, showModal, onClose}) => {
+  console.log(boards)
   const [boardName, setBoardName] = useState("");
 
   const handleChange = (e) => {
@@ -10,8 +11,8 @@ const CreateNewBoard = ({state, mutateState, showModal, onClose}) => {
   }
 
   const handleAdd = () => {
-    const newState = {...state};
-    newState.boards.push({id: uuidv4(), title: boardName});
+    const newState = [...boards];
+    newState.push({id: uuidv4(), title: boardName, tasks:{}, columns:{}, columnOrder:[]});
     mutateState(newState);
     setBoardName("");
     onClose();
