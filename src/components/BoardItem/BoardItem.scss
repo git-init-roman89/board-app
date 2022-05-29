@@ -1,0 +1,23 @@
+.mainboard-boards-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #026aa7;
+    width: 190px;
+    height: 95px;
+    border-radius: 4px;
+}
+
+.board-card-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 0 0 10px;
+}
+
+.board-card-icon {
+    text-align: right;
+    padding: 0 8px 8px 0;
+    color: white;
+    font-size: 12px;
+}

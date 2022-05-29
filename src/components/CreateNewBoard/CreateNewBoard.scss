@@ -1,0 +1,125 @@
+.create-newboard-modal {
+  width: 270px;
+  border: 1px solid rgba(9, 30, 66, 0.2);
+  border-radius: 2px;
+  padding: 5px 8px;
+}
+
+.create-newboard-modal-content {
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+}
+
+.create-newboard-modal-header {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-newboard-modal-title-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create-newboard-modal-title {
+  color: rgba(9, 30, 66, 0.66);
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.create-newboard-modal-title-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit
+}
+
+.fa-xmark {
+  color: rgba(9, 30, 66, 0.66);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.fa-xmark:hover,
+.fa-xmark:focus {
+  cursor: pointer;
+}
+
+.create-newboard-modal-title-underline {
+  width: 95%;
+  border: 1px solid rgba(9, 30, 66, 0.2);
+}
+
+.create-newboard-modal-main {
+  display: flex;
+  flex-flow: column;
+  gap: 4px;
+}
+
+.create-newboard-modal-main-title-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+.create-newboard-modal-main-title {
+  color: rgba(9, 30, 66, 0.66);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.fa-star-of-life {
+  color: red;
+  font-size: 5px;
+  margin-bottom: 6px;
+}
+
+.create-newboard-modal-main-input {
+  width: 100%;
+}
+
+.create-newboard-modal-main-subtitle-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.create-newboard-modal-main-subtitle {
+  color: rgba(9, 30, 66, 0.66);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.create-newboard-modal-footer {
+    width: 100%;
+}
+
+.create-newboard-modal-button {
+  background-color: rgba(9, 30, 66, 0.0392156863);
+  color: #172b4d;
+  font-size: 13px;
+  font-weight: 300;
+  padding: 10px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.create-newboard-modal-button:hover,
+.create-newboard-modal-button:focus {
+    background-color: rgba(9, 30, 66, 0.08);
+}

@@ -1,0 +1,61 @@
+.mainboard-section {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.mainboard-header-and-boards-container {
+    width: 65%;
+    display: flex;
+    flex-flow: column;
+}
+.mainboard-header-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 0px 0px 6px 8px;
+    width: 100%;
+}
+
+.mainboard-header {
+    font-size: 16px;
+}
+
+.mainboard-boards-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+    width: 100%;
+}
+
+.new-board-container {
+    display: flex;
+    flex-flow: row;
+    gap: 16px;
+    align-items: flex-start;
+    margin-top: 29px;
+}
+
+.new-board {
+    background-color: #091e420a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 190px;
+    height: 95px;
+    border-radius: 4px;
+}
+
+.new-board:hover,
+.new-board:focus {
+    background-color: rgba(9, 30, 66, 0.08);
+    cursor: pointer;
+}
+
+.new-board-title {
+    color: #172b4d;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 0;
+}

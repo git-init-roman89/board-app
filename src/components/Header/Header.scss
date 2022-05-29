@@ -1,0 +1,140 @@
+.main-header {
+    height: 44px;
+    background-color: #026aa7;
+    display: flex;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin: 5px 7px;
+    height: 36px;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.logo-container:hover,
+.logo-container:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.logo-text {
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+.fa-table-cells,
+.fa-map {
+    color: white;
+    font-size: 18px;
+}
+
+.fa-angle-down {
+    margin-left: 8px;
+}
+
+.main-logo {
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.main-logo-link {
+    text-decoration: none;
+}
+
+.main-logo-link:visited,
+.main-logo-link:hover,
+.main-logo-link:focus {
+    color: white;
+}
+
+.main-navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.main-navlist {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist-item {
+    padding: 5px 12px;
+    border-radius: 4px;
+}
+
+.navlist-item:hover,
+.navlist-item:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.navitem-text {
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.btn-active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding-right: 16px;
+}
+
+.searchbar {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: none;
+    font-size: 14px;
+    height: 32px;
+    line-height: 19px;
+    margin: 0px 4px;
+    outline: none;
+    padding-left: 30px;
+    padding-right: 8px;
+    width: 250px;
+    position: relative;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    padding-left: 12px;
+    padding-top: -4px;
+    font-size: 15px;
+}
+
+::placeholder {
+    color: white;
+    transform: translateY(2px);
+  }
+
+.fa-circle-info,
+.fa-bell {
+    font-size: 20px;
+}

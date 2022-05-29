@@ -1,0 +1,24 @@
+.boardpage-workspace {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+    margin: 0 auto;
+    background-color: #0079bf;
+}
+
+
+.workspace-card-item {
+    background-color: white;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.49);
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.workspace-card-item-title {
+    color: #172b4d;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 8px 6px;
+}

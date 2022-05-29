@@ -1,0 +1,67 @@
+.create-newlist-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 45px;
+    color: white;
+    background-color: #3d99ce;
+    font-size: 13px;
+    border: none;
+    border-radius: 2px;
+    gap: 4px;
+}
+
+.create-newlist-button:hover,
+.create-newlist-button:focus {
+ background-color: #52a4d4;
+ cursor: pointer;
+}
+
+.create-newlist-input-container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    width: 300px;
+    background-color: white;
+    padding: 6px;
+}
+
+.create-newlist-input {
+    width: 100%;
+}
+
+.create-newlist-input-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.create-newlist-input-button {
+    color: white;
+    background-color: #0079bf;
+    font-size: 13px;
+    border: none;
+    border-radius: 3px;
+    padding: 7px 14px;
+}
+
+.create-newlist-input-button:hover,
+.create-newlist-input-button:focus {
+    background-color: #026aa7;
+    cursor: pointer;
+}
+
+
+.create-newlist-input-close-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit
+}
+
