@@ -2,33 +2,30 @@ import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import "./CreateNewListItem.scss";
 
+const randomId = (max) => Math.floor(Math.random() * Math.floor(max));
+
 const CreateNewListItem = (props) => {
-  const [state, setState] = useState(props.state);
   const [cardName, setCardName] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [toggle, setToggle] = useState(true);
-  const toggleChecked = () => setToggle((toggle) => !toggle);
 
   const handleChange = (e) => {
     setCardName(e.target.value);
   };
 
   const handleAdd = () => {
-    const newListItem = state.tasks.push({ id: uuidv4(), text: cardName });
-
-    setState(newListItem);
-
+    const newBoard = {...props.board};
+    const taskId = `task-${randomId(1000)}` 
+    newBoard.tasks[taskId] = { id: uuidv4(), text: cardName };
+    newBoard.columns[props.columnId].taskIds.push(taskId);
+    props.setBoard(newBoard);
     setCardName("");
+    setShowModal(false);
   };
-
-  if (!props.showModal) {
-    return null;
-  }
 
   return (
     <div className="create-new-listitem-modal">
       <div className="create-newlistitem-modal-content">
-        {!toggle && (
+        {showModal && (
           <>
             <div className="create-newlistitem-modal-main">
               <input
@@ -50,18 +47,18 @@ const CreateNewListItem = (props) => {
               </button>
               <button
                 className="create-newboard-modal-title-button"
-                onClick={props.onClose}
+                onClick={() => setShowModal(false)}
               >
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
           </>
         )}
-        {toggle && (
-          <span className="create-newlistitem-footer" onClick={toggleChecked}>
+        {!showModal && (
+          <span className="create-newlistitem-footer" onClick={() => setShowModal(true)}>
             <span
               className="create-newlistitem-footer-container"
-              onClick={() => setShowModal(true)}>
+              >
               <i class="fa-solid fa-plus"></i>
               <h3 className="workspace-footer-title">Додати картку</h3>
             </span>

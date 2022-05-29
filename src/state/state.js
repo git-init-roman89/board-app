@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 const boards = [
   {
-    id: uuidv4(),
+    id: "2101b32e-d35f-422c-a186-746c0f0ea8f8",
     title: "Demo Board"
   },
   {
-    id: uuidv4(),
+    id: "2101b32e-d35f-422c-a186-746c0f0ea8f9",
     title: "New Board"
   }
 ]

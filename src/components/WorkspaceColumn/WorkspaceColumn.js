@@ -4,7 +4,6 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import "./WorkspaceColumn.scss";
 
 const WorkspaceColumn = (props) => {
-  const [showModal, setShowModal] = useState(true);
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
@@ -50,9 +49,9 @@ const WorkspaceColumn = (props) => {
             </Droppable>
             <span className="workspace-column-footer">
               <CreateNewListItem
-                onClose={() => setShowModal(false)}
-                showModal={showModal}
-                state={props.state}
+                board={props.board}
+                columnId={props.columnId} 
+                setBoard={props.setBoard}   
               />
             </span>
           </div>

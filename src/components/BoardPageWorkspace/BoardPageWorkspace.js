@@ -6,6 +6,7 @@ import CreateNewList from "../CreateNewList/CreateNewList";
 
 const BoardPageWorkspace = (props) => {
   const [board, setBoard] = useState(props.board);
+  console.log(board)
 
   // useEffect(() => {
   //   const data = localStorage.getItem("myState")
@@ -25,10 +26,13 @@ const BoardPageWorkspace = (props) => {
     });
     return (
         <WorkspaceColumn
-        key={column.id}
+        key={columnId}
         column={column}
         tasks={tasks}
         index={index}
+        board={board}
+        setBoard={setBoard}
+        columnId={columnId}
       />
     );
   });
@@ -60,6 +64,7 @@ const BoardPageWorkspace = (props) => {
     }
 
     const start = board.columns[source.droppableId];
+    console.log(start, source.droppableId)
     const finish = board.columns[destination.droppableId];
 
     if (start === finish) {
@@ -122,7 +127,7 @@ const BoardPageWorkspace = (props) => {
             >
               {workspace}
               {provided.placeholder}
-              <CreateNewList state={props.state}/>
+              <CreateNewList board={board} setBoard={setBoard} />
             </section>
           )}
         </Droppable>

@@ -4,7 +4,6 @@ import { CreateNewBoard, BoardItem } from "../index";
 import "./BoardList.scss";
 
 const BoardList = (props) => {
-  console.log(props)
   const [showModal, setShowModal] = useState(false);
 
   const boardsList = props.boards.map((item) => {

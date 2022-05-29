@@ -1,35 +1,31 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import "./CreateNewList.scss";
 
-const CreateNewList = (props) => {
+const randomId = (max) => Math.floor(Math.random() * Math.floor(max));
+
+const CreateNewList = ({ board, setBoard }) => {
   const [toggle, setToggle] = useState(true);
   const toggleChecked = () => setToggle((toggle) => !toggle);
 
-  const [newColumn, setNewColumn] = useState(props.state);
   const [columnName, setColumnName] = useState("");
 
   const handleChange = (e) => {
     setColumnName(e.target.value);
-  }
+  };
 
   const addNewColumn = () => {
-    setNewColumn((newColumn) => {
-      return {
-        ...newColumn,
-        columns: {
-          ...newColumn.columns,
-          [columnName]: {
-            id: uuidv4(),
-            title: columnName,
-            subtitle: "Move anything from doing to done here",
-            taskIds: ["task-16", "task-17", "task-18", "task-19", "task-20"],
-          },
-        },
-        columnOrder: [...newColumn.columnOrder, columnName]
-      };
-    });
+    const newBoard = { ...board };
 
+    const columnId = `column${randomId(100)}`;
+    newBoard.columns[columnId] = {
+      id: columnId,
+      subtitle: "Move anything 'ready' here",
+      taskIds: [],
+      title: columnName,
+    };
+    newBoard.columnOrder = [...newBoard.columnOrder, columnId];
+    setBoard(newBoard);
     setColumnName("");
   };
   return (

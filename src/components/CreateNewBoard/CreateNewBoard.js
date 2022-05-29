@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./CreateNewBoard.scss";
 
 const CreateNewBoard = ({boards, mutateState, showModal, onClose}) => {
-  console.log(boards)
   const [boardName, setBoardName] = useState("");
 
   const handleChange = (e) => {
