@@ -1,13 +1,15 @@
 import { useState } from "react";
 import {Link, useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 import { CreateNewBoard, BoardItem } from "../index";
 import "./BoardList.scss";
 
 const BoardList = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const boards = useSelector(state => state.boards);
 
-  const boardsList = props.boards.map((item) => {
-    return <Link to={`demoboard/${item.id}`} key={item.id} ><BoardItem key={item.id} title={item.title} state={props.boards} /></Link>;
+  const boardsList = boards.map((item) => {
+    return <Link to={`/demoboard/${item.id}`} key={item.id} ><BoardItem key={item.id} title={item.title} state={boards} /></Link>;
   });
 
   return (
@@ -33,8 +35,6 @@ const BoardList = (props) => {
         <CreateNewBoard
           onClose={() => setShowModal(false)}
           showModal={showModal}
-          mutateState={props.mutateState}
-          boards={props.boards}
         />
         </div>
     </section>

@@ -1,24 +1,18 @@
-import {MainPage, BoardPage} from "./pages/index";
-import initialState from "./state/state";
-import { useState } from "react";
-import {Routes, Route} from "react-router-dom";
-import './App.scss';
+import { MainPage, BoardPage } from "./pages/index";
+import { Routes, Route } from "react-router-dom";
+import "./App.scss";
 
-const App = (props) => {
-  const [state, setState] = useState(initialState);
-
-  const mutateState = (values) => {
-    setState(values)
-  }
-
+const App = () => {
   return (
-    <>
-    <Routes>
-      <Route path="/" element={<MainPage boards = {state} mutateState={mutateState} />} />
-      <Route path="demoboard/:id" element={<BoardPage boards={state} />} />
-    </Routes>
-    </>
+      <Routes>
+        <Route index path="/" element={<MainPage />}>
+
+        </Route>
+        <Route path="demoboard">
+            <Route path=":id" element={<BoardPage />} />
+          </Route>
+      </Routes>
   );
-}
+};
 
 export default App;

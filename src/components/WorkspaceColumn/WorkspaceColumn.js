@@ -51,7 +51,6 @@ const WorkspaceColumn = (props) => {
               <CreateNewListItem
                 board={props.board}
                 columnId={props.columnId} 
-                setBoard={props.setBoard}   
               />
             </span>
           </div>

@@ -1,23 +1,22 @@
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import addTask from "./CreateNewListItemActions";
 import "./CreateNewListItem.scss";
-
-const randomId = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const CreateNewListItem = (props) => {
   const [cardName, setCardName] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     setCardName(e.target.value);
   };
 
   const handleAdd = () => {
-    const newBoard = {...props.board};
-    const taskId = `task-${randomId(1000)}` 
-    newBoard.tasks[taskId] = { id: uuidv4(), text: cardName };
-    newBoard.columns[props.columnId].taskIds.push(taskId);
-    props.setBoard(newBoard);
+    const taskId = uuidv4();
+    const task = { id: taskId, text: cardName };
+    dispatch(addTask(task, props.board.id, props.columnId))
     setCardName("");
     setShowModal(false);
   };
@@ -55,10 +54,11 @@ const CreateNewListItem = (props) => {
           </>
         )}
         {!showModal && (
-          <span className="create-newlistitem-footer" onClick={() => setShowModal(true)}>
-            <span
-              className="create-newlistitem-footer-container"
-              >
+          <span
+            className="create-newlistitem-footer"
+            onClick={() => setShowModal(true)}
+          >
+            <span className="create-newlistitem-footer-container">
               <i class="fa-solid fa-plus"></i>
               <h3 className="workspace-footer-title">Додати картку</h3>
             </span>

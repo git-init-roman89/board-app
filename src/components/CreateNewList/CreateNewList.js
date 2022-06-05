@@ -2,8 +2,6 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreateNewList.scss";
 
-const randomId = (max) => Math.floor(Math.random() * Math.floor(max));
-
 const CreateNewList = ({ board, setBoard }) => {
   const [toggle, setToggle] = useState(true);
   const toggleChecked = () => setToggle((toggle) => !toggle);
@@ -17,7 +15,7 @@ const CreateNewList = ({ board, setBoard }) => {
   const addNewColumn = () => {
     const newBoard = { ...board };
 
-    const columnId = `column${randomId(100)}`;
+    const columnId = uuidv4();
     newBoard.columns[columnId] = {
       id: columnId,
       subtitle: "Move anything 'ready' here",

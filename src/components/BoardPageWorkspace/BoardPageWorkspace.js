@@ -1,37 +1,37 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import WorkspaceColumn from "../WorkspaceColumn/WorkspaceColumn";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import "./BoardPageWorkspace.scss";
 import CreateNewList from "../CreateNewList/CreateNewList";
+import { changeColumnOrder, changeTaskOrderInsideColumn } from "./BoardPageWorkspaceActions";
 
 const BoardPageWorkspace = (props) => {
-  const [board, setBoard] = useState(props.board);
-  console.log(board)
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   const data = localStorage.getItem("myState")
   //   if(data) {
-  //     setboard(JSON.parse(data))
+  //     setBoard(JSON.parse(data))
   //   }
   // }, []);
 
   // useEffect(() => {
   //   localStorage.setItem("myState", JSON.stringify(board))
   // }, [board]);
-
-  const workspace = board.columnOrder.map((columnId, index) => {
-    const column = board.columns[columnId];
+  const setBoard = () => {};
+  const workspace = props.board.columnOrder.map((columnId, index) => {
+    const column = props.board.columns[columnId];
     const tasks = column.taskIds.map((taskId) => {
-      return board.tasks[taskId];
+      return props.board.tasks[taskId];
     });
     return (
-        <WorkspaceColumn
+      <WorkspaceColumn
         key={columnId}
         column={column}
         tasks={tasks}
         index={index}
-        board={board}
-        setBoard={setBoard}
+        board={props.board}
         columnId={columnId}
       />
     );
@@ -52,22 +52,18 @@ const BoardPageWorkspace = (props) => {
     }
 
     if (type === "column") {
-      const newColumnOrder = Array.from(board.columnOrder);
+      const newColumnOrder = Array.from(props.board.columnOrder);
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
-
-      setBoard({
-        ...board,
-          columnOrder: newColumnOrder,
-      });
+      dispatch(changeColumnOrder(props.board.id, newColumnOrder));
       return;
     }
 
-    const start = board.columns[source.droppableId];
-    console.log(start, source.droppableId)
-    const finish = board.columns[destination.droppableId];
+    const start = props.board.columns[source.droppableId];
+    const finish = props.board.columns[destination.droppableId];
 
     if (start === finish) {
+      console.log(start)
       const newTaskIds = Array.from(start.taskIds);
       newTaskIds.splice(source.index, 1);
       newTaskIds.splice(destination.index, 0, draggableId);
@@ -76,14 +72,10 @@ const BoardPageWorkspace = (props) => {
         ...start,
         taskIds: newTaskIds,
       };
-
-      setBoard({
-        ...board,
-        columns: {
-          ...board.columns,
-          [newColumn.id]: newColumn,
-        },
-      });
+      dispatch(changeTaskOrderInsideColumn(props.board.id, {
+        ...props.board.columns,
+        [newColumn.id]: newColumn,
+      }))
       return;
     }
 
@@ -102,9 +94,9 @@ const BoardPageWorkspace = (props) => {
     };
 
     setBoard({
-      ...board,
+      ...props.board,
       columns: {
-        ...board.columns,
+        ...props.board.columns,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish,
       },
@@ -127,7 +119,7 @@ const BoardPageWorkspace = (props) => {
             >
               {workspace}
               {provided.placeholder}
-              <CreateNewList board={board} setBoard={setBoard} />
+              <CreateNewList board={props.board} setBoard={setBoard} />
             </section>
           )}
         </Droppable>

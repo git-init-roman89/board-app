@@ -1,13 +1,14 @@
 import { BoardList, Header, Sidebar } from "../components/index";
 import "./MainPage.scss";
 
-const MainPage = (props) => {
+const MainPage = () => {
+
   return (
     <>
       <Header />
       <main className="main-container">
         <Sidebar />
-        <BoardList boards = {props.boards} mutateState={props.mutateState} />
+        <BoardList />
       </main>
     </>
   );

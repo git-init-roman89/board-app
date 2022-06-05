@@ -1,18 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import {addNewBoard} from "./CreateNewBoardActions";
 import "./CreateNewBoard.scss";
 
-const CreateNewBoard = ({boards, mutateState, showModal, onClose}) => {
+const CreateNewBoard = ({showModal, onClose}) => {
   const [boardName, setBoardName] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setBoardName(e.target.value);
   }
 
   const handleAdd = () => {
-    const newState = [...boards];
-    newState.push({id: uuidv4(), title: boardName, tasks:{}, columns:{}, columnOrder:[]});
-    mutateState(newState);
+    dispatch(addNewBoard({id: uuidv4(), title: boardName, tasks:{}, columns:{}, columnOrder:[]}));
     setBoardName("");
     onClose();
   }
