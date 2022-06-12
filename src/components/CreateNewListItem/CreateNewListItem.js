@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import addTask from "./CreateNewListItemActions";
+import {addTask} from "./CreateNewListItemActions";
 import "./CreateNewListItem.scss";
 
 const CreateNewListItem = (props) => {

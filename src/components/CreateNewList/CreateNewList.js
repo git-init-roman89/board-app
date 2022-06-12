@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { addNewColumnAction } from "../BoardPageWorkspace/BoardPageWorkspaceActions";
 import "./CreateNewList.scss";
 
 const CreateNewList = ({ board, setBoard }) => {
@@ -7,23 +9,23 @@ const CreateNewList = ({ board, setBoard }) => {
   const toggleChecked = () => setToggle((toggle) => !toggle);
 
   const [columnName, setColumnName] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setColumnName(e.target.value);
   };
 
   const addNewColumn = () => {
-    const newBoard = { ...board };
-
     const columnId = uuidv4();
-    newBoard.columns[columnId] = {
-      id: columnId,
-      subtitle: "Move anything 'ready' here",
-      taskIds: [],
-      title: columnName,
-    };
-    newBoard.columnOrder = [...newBoard.columnOrder, columnId];
-    setBoard(newBoard);
+    dispatch(
+      addNewColumnAction(board.id, {
+        id: columnId,
+        subtitle: "Move anything 'ready' here",
+        taskIds: [],
+        title: columnName,
+      })
+    );
+
     setColumnName("");
   };
   return (

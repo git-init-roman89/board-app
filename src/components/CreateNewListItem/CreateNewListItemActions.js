@@ -11,5 +11,5 @@ const addTask = (task, boardId, columnId) => {
     }
   }
 
-  export default addTask;
+  export {addTask, ADD_TASK};
   
