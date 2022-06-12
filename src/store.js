@@ -10,6 +10,19 @@ import {
 } from "./components/BoardPageWorkspace/BoardPageWorkspaceActions";
 import { cloneDeep } from "lodash";
 
+const wrapper = (state, boardId, fn) => {
+  const newState = cloneDeep(state).map((item) => {
+    if (item.id === boardId) {
+      const newBoard = { ...item };
+
+      return fn(newBoard);
+    }
+    return item;
+  });
+
+  return newState;
+};
+
 const boardsReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TASK: {
@@ -45,17 +58,28 @@ const boardsReducer = (state = [], action) => {
       return newState;
     }
 
+    {/*work приймає знайдений board, який треба мутувати;
+        мутує його і повертає;
+        wrapper клонує state, знаходить потрібний board, і передає його 
+        в функцію, яка його мутує;
+        вкінці збирає борди в state*/}
+
     case CHANGE_TASK_ORDER_INSIDE_COLUMN: {
       const { boardId, columns } = action.payload;
-      const newState = cloneDeep(state).map((item) => {
-        if (item.id === boardId) {
-          const newBoard = { ...item };
-          newBoard.columns = columns;
-          return newBoard;
-        }
-        return item;
-      });
-      return newState;
+      const work = (newBoard) => {
+        newBoard.columns = columns;
+        return newBoard;
+      };
+      return wrapper(state, boardId, work)
+      // const newState = cloneDeep(state).map((item) => {
+      //   if (item.id === boardId) {
+      //     const newBoard = { ...item };
+      //     newBoard.columns = columns;
+      //     return newBoard;
+      //   }
+      //   return item;
+      // });
+      // return newState;
     }
 
     case CHANGE_TASK_COLUMN: {
